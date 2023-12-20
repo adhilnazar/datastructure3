@@ -116,6 +116,7 @@ class BST:
                 node = self.right
             self.key = node.key
             self.left = self.left.Delete(node.key)
+            
         return self 
         
 b = BST(None)
