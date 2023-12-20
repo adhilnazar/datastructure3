@@ -69,6 +69,7 @@ def BFS(node,graph):
             for x in graph[curr]:
                 if x not in visited:
                     queue.append(x)
+                    
 
 graph = {}
 visited = set()
