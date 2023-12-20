@@ -33,14 +33,42 @@ def delete_edge(v1,v2):
 def DFS(node,visited,graph):
 
     if node not in graph:
-        print("Enter Correctly")
+        print("Error 404")
         return
     if node not in visited:
         print(node,end=" ")
         visited.add(node)
         for i in graph[node]:
             DFS(i,visited,graph)
+# def bfs_itr(snode,graph):
+#     visited=set()
+#     if snode not in graph:
+#         return None
+#     qeue=[snode]
+#     while qeue:
+#         curr=qeue.pop(0)
+#         if curr not in visited:
+#             print(curr)
+#             visited.add(curr)
+#             for x in graph[curr]:
+#                 if x not in visited:
+#                     qeue.append(x)
 
+def BFS(node,graph):
+
+    visited = set()
+    
+    if node not in graph:
+        return 404 
+    queue = [node]
+    while queue:
+        curr = queue.pop(0)
+        if curr not in visited:
+            print(curr)
+            visited.add(curr)
+            for x in graph[curr]:
+                if x not in visited:
+                    queue.append(x)
 
 graph = {}
 visited = set()
@@ -58,4 +86,6 @@ add_edge(5,2)
 # delete_node(3)
 
 # delete_edge(2,5)
-DFS(5,visited,graph)
+# DFS(5,visited,graph)
+# bfs_itr(3,graph)
+print(graph)
