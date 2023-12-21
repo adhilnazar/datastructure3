@@ -118,15 +118,42 @@ class BST:
             self.left = self.left.Delete(node.key)
             
         return self 
-        
+
+
+def is_identical(r1,r2):
+    if r1 is None and r2 is None:
+        return True
+    if r1 is None or r2 is None:
+        return False
+    
+    return (r1.key == r2.key) and\
+            is_identical(r1.left,r2.left) and\
+            is_identical(r1.right,r2.right)  
+
+def closest_val(root,target):
+    closest = root.key
+    while root:
+        closest = min(root.key,closest, key=lambda x: abs(target - x))
+
+        if target < root.key:
+            root = root.left
+        elif target > root.key:
+            root = root.right
+        else:
+            return root.key
+    return closest
+
 b = BST(None)
-list1 = [15,10,17,16,8,11,16,18]
+list1 = [-1,15,10,17,16,8,11,16,18]
 for i in list1:
     b.insert(i)
-b.in_order()
-print("After Deletion\n")
-b. Delete(0)
-# b.in_order()
-b.post_order()
-print("\n")
-b.search(15)
+
+# c = BST(None)
+# list2 = [15,10,17,16,8,11,16,18,9]
+# for i in list2:
+#     c.insert(i)
+
+# print(is_identical(b,c))
+target = 14
+result = closest_val(b,target)
+print(f"the closest value of {target} is : {result}")

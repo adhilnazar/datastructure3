@@ -1,6 +1,7 @@
 class TrieNode:
     def __init__(self) -> None:
         self.children = dict()
+        self.endofword = False
 class Trie:
     def __init__(self) -> None:
         self.root = TrieNode()
@@ -11,6 +12,7 @@ class Trie:
             if char not in node.children:
                 node.children[char] = TrieNode()
             node = node.children[char]
+        self.endofword = True
 
     def Search(self,data):
         node = self.root
